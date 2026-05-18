@@ -1,0 +1,32 @@
+# .gitignore
+# Environment
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+venv/
+env/
+.venv/
+
+# Docker volumes (data local, không cần backup trên git)
+postgres_data/
+n8n_data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Uploads (CV files của users)
+uploads/
+temp/

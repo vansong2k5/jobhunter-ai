@@ -1,0 +1,13 @@
+POSTGRES_DB=jobhunter
+POSTGRES_USER=your_db_user
+POSTGRES_PASSWORD=your_secure_password
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+DATABASE_URL=postgresql://user:password@postgres:5432/jobhunter
+
+ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
+OPENAI_API_KEY=sk-proj-your-key-here
+
+N8N_BASIC_AUTH_ACTIVE=true
+N8N_BASIC_AUTH_USER=admin
+N8N_BASIC_AUTH_PASSWORD=your_n8n_password

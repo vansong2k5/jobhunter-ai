@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════
+# requirements.txt — JobHunter AI Platform
+# Python 3.11 (pinned trong Dockerfile)
+# Last tested: 2026-05-17
+# ═══════════════════════════════════════════════════════
+
+# ── WEB FRAMEWORK ──────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9      # File upload support
+
+# ── DATABASE ────────────────────────────────────────────
+psycopg2-binary==2.9.9       # PostgreSQL adapter
+# Dùng binary vì không cần compile từ source → tránh lỗi libpq
+sqlalchemy==2.0.30            # ORM (optional nhưng tiện)
+pgvector==0.3.2               # pgvector Python client
+
+# ── AI / LLM ────────────────────────────────────────────
+anthropic==0.28.0             # Claude API
+openai==1.30.1                # OpenAI embeddings (text-embedding-3-small)
+# KHÔNG dùng LangChain — quá nhiều dependency, version hell
+
+# ── DATA PROCESSING ─────────────────────────────────────
+pandas==2.2.2
+numpy==1.26.4                 # Pinned vì numpy 2.x break nhiều packages
+# numpy<2.0 là safer choice hiện tại
+
+# ── CV PARSING ──────────────────────────────────────────
+pdfplumber==0.11.1            # Đọc PDF (cần poppler — install trong Dockerfile)
+python-docx==1.1.2            # Đọc DOCX
+# KHÔNG dùng PyMuPDF (fitz) cùng lúc với pdfplumber → conflict
+
+# ── WEB SCRAPING ────────────────────────────────────────
+requests==2.32.2
+beautifulsoup4==4.12.3
+lxml==5.2.2                   # BS4 parser (nhanh hơn html.parser)
+httpx==0.27.0                 # Async HTTP (anthropic dùng internally)
+
+# ── STREAMLIT UI ────────────────────────────────────────
+streamlit==1.35.0
+plotly==5.22.0                # Charts trong streamlit
+altair==5.3.0                 # Charts (streamlit built-in)
+
+# ── UTILITIES ───────────────────────────────────────────
+python-dotenv==1.0.1          # Load .env file
+pydantic==2.7.1               # Data validation (FastAPI dùng)
+pydantic-settings==2.3.0      # Settings management
+python-jose==3.3.0            # JWT (nếu cần auth)
+passlib==1.7.4                # Password hashing
+bcrypt==4.1.3
+
+# ── LOGGING & MONITORING ────────────────────────────────
+loguru==0.7.2                 # Better logging than stdlib
+
+# ── TESTING ─────────────────────────────────────────────
+pytest==8.2.0
+pytest-asyncio==0.23.6
+httpx==0.27.0                 # Test HTTP calls
